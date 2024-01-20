@@ -15,6 +15,12 @@ import { createApp } from 'vue';
 
 const app = createApp({});
 
+import Posts from './components/posts/Posts.vue';
+app.component('posts', Posts);
+
+import Post from './components/posts/Post.vue';
+app.component('post', Post);
+
 import ExampleComponent from './components/ExampleComponent.vue';
 app.component('example-component', ExampleComponent);
 
