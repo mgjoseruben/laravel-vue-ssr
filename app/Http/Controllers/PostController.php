@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +16,7 @@ class PostController extends Controller
         $posts = Post::paginate(1);
         $title = 'Posts';
         $short_description = 'Best blog posts in the world';
-        if ($request->ajax() || $request->isJson()) {
+        if (request()->ajax() || request()->isJson()) {
             return response()->json($posts, 200);
         } else {
             return view('posts', ['title' => $title,'short_description' => $short_description ]);
@@ -43,7 +45,7 @@ class PostController extends Controller
     public function show(string $id)
     {
         $post = Post::find($id);
-        if ($request->ajax() || $request->isJson()) {
+        if (request()->ajax() || request()->isJson()) {
             return response()->json($post, 200);
         } else {
             return view('post', ['post' => $post]);
